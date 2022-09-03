@@ -1,0 +1,116 @@
+
+
+<br>
+<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>questions</u></h1> 
+
+<br>
+<div class="container form-control">
+    <div class="row u">
+      <div class="">
+        <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-group">
+              <label for="question1">question1</label>
+              <input
+                type="text"
+                id="question1"
+                class="form-control"
+                ngModel
+                name="question1"
+                required>
+            </div>
+            <label for="question2">שאלה 1</label>
+            <div class="form-group">
+            <input
+              type="text"
+              id="question2"
+              class="form-control"
+              ngModel
+              name="question2"
+              required>
+          </div>
+          <hr>
+          <button
+          class="btn btn-primary form-control"
+          type="submit"
+          [disabled]="!f.valid">Submit</button>
+        </form>  
+  
+    </div></div></div>
+
+
+  <!-- <div class="form-group">
+    <label for="secret">Secret Questions</label>
+    <select
+      id="secret"
+      class="form-control"
+      [ngModel]="defaultQuestion"
+      name="secret">
+      <option value="pet">Your first Pet?</option>
+      <option value="teacher">Your first teacher?</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <textarea
+      name="questionAnswer"
+      rows="3"
+      class="form-control"
+      [(ngModel)]="answer"></textarea>
+  </div>
+  <p>Your reply: {{ answer }}</p>
+  <div class="radio" *ngFor="let gender of genders">
+    <label>
+      <input
+        type="radio"
+        name="gender"
+        ngModel
+        [value]="gender"
+        required>
+      {{ gender }}
+    </label>
+  </div>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    [disabled]="!f.valid">Submit</button>
+</form>
+</div>
+</div>
+<hr>
+<div class="row" *ngIf="submitted">
+<div class="col-xs-12">
+<h3>Your Data</h3>
+<p>Username: {{ user.username }}</p>
+<p>Mail: {{ user.email }}</p>
+<p>Secret Question: Your first {{ user.secretQuestion }}</p>
+<p>Answer: {{ user.answer }}</p>
+<p>Gender: {{ user.gender }}</p>
+</div>
+</div> -->
+
+
+<!-- 
+<form class="container form-control" #f='ngForm' (ngSubmit)="onSubmit(f)">
+
+            <label for="username" class='control-label'>username</label>
+            <input type="text" id="username" class="form-control" NgModel name='username'>
+            <label for="password" class='control-label'>password</label>
+            <input type="text" id="password" class="form-control" NgModel name='password'>
+
+    <hr>
+    <button type="submit" class="btn btn-primary col-md-12 form-control" [disabled]="!f.valid">submit</button>
+</form>
+<pre>{{f.value | json}}</pre>
+ -->
+
+
+
+    <!-- <div class="row form-group form" >
+        <div class="col-md-12 "> -->
+            <!-- <label [for]="i">{{q.question}}</label>
+            <input *ngIf="q.type == 'number'" [id]="i" [type]="q.type" class=" form-control" required [min]="q.range.min" [max]="q.range.max" NgModel [name]='q.title'>
+            <input *ngIf="q.type == 'text'" [id]="i" [type]="q.type" class="form-control" required NgModel [name]='q.title'>
+            <select *ngIf="q.type == 'list'" [id]="i" class="form-control" required >
+                <option *ngFor='let option of q.options' [value]="option">{{option}}</option>
+            </select> -->
+        <!-- </div>
+    </div> -->
