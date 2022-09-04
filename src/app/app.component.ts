@@ -16,10 +16,13 @@ export class AppComponent {
   mouseY: number;
   width: number;
   height: number;
-  mouseMoveFlag: boolean = true;
-  mouseMoveMatrix: Number[][] = new Array;
-  mouseMoveTimeMatrix: Date[] = new Array;
-  avgPixelPerSecond: number;
+  mouseMoveFlag: boolean = true; // flag to mouse move
+  mouseMoveMatrix: Number[][] = new Array; // 2d arr that contains the current location of mouse [x.location][y.location]
+  mouseMoveTimeMatrix: Date[] = new Array; // arr to save the time of the mouse movement index is fit to the mouseMoveMatrix
+  avgPixelPerSecond: number; // avg of the speed pixel per second
+  typeKeyBoardMatrix: Number[] = new Array; // contains the time when a user press a key
+  // indexForKeyTime : number; // to calculate the average time between all the keys pressed without repeating
+
 
 
 
@@ -51,7 +54,7 @@ export class AppComponent {
       }
       setTimeout(() => {
         this.mouseMoveFlag = true;
-      }, 2000);
+      }, 500);
     } else {
       return;
     }
@@ -61,13 +64,22 @@ export class AppComponent {
   @HostListener('click', ['$event'])
   @HostListener('scroll', ['$event'])
 
-  eventHandler($event: KeyboardEvent) {
+  keyup($event: KeyboardEvent) {
     console.log('key event:', $event);
+    if ($event.type === 'keydown') {
+      this.typeKeyBoardMatrix.push($event.timeStamp);
+      let avgPressedSpeed = 0.0;
+      for (let i = 0; i < this.typeKeyBoardMatrix.length; i++) {
+        avgPressedSpeed += parseFloat(this.typeKeyBoardMatrix[i].toString());
+      }
+      avgPressedSpeed /= this.typeKeyBoardMatrix.length;
+      console.log("The avg diffrence between pressed key is: " + avgPressedSpeed);
+    }
   }
 
 
 
-  keydown($event: KeyboardEvent) {
-    console.log('key event:', $event);
-  }
+  // keydown($event: KeyboardEvent) {
+  //   console.log('Kkey event:', $event);
+  // }
 }
