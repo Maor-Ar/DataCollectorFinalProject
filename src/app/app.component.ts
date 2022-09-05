@@ -69,8 +69,8 @@ export class AppComponent {
     if ($event.type === 'keydown') {
       this.typeKeyBoardMatrix.push($event.timeStamp);
       let avgPressedSpeed = 0.0;
-      for (let i = 0; i < this.typeKeyBoardMatrix.length; i++) {
-        avgPressedSpeed += parseFloat(this.typeKeyBoardMatrix[i].toString());
+      for (let i = 0; i < this.typeKeyBoardMatrix.length-1; i++) {
+        avgPressedSpeed += (parseFloat(this.typeKeyBoardMatrix[i+1].toString()) - parseFloat(this.typeKeyBoardMatrix[i].toString()));
       }
       avgPressedSpeed /= this.typeKeyBoardMatrix.length;
       console.log("The avg diffrence between pressed key is: " + avgPressedSpeed);
