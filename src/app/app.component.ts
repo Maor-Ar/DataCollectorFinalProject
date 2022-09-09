@@ -38,24 +38,24 @@ export class AppComponent {
       this.mouseMoveTimeMatrix.push($event.timeStamp);
       console.log('x:', this.mouseX, 'y:', this.mouseY, 'width:', this.width, 'height:', this.height);
       console.log($event);
+      console.log(this.mouseMoveMatrix.length);
       this.mouseMoveFlag = false;
       if (this.mouseMoveMatrix.length != 0 && this.mouseMoveMatrix.length != 1) {
         let vX = 0.0;
         let vY = 0.0;
         for (let i = 0; i < this.mouseMoveMatrix.length - 1; i++) {
-          const d = this.mouseMoveTimeMatrix[i + 1].valueOf() - this.mouseMoveTimeMatrix[i].valueOf();
-          vX = vX + (Math.abs(parseFloat(this.mouseMoveMatrix[i + 1][0].toString())) - Math.abs(parseFloat(this.mouseMoveMatrix[i][0].toString())) / d);
-          vY = vY + (Math.abs(parseFloat(this.mouseMoveMatrix[i + 1][1].toString())) - Math.abs(parseFloat(this.mouseMoveMatrix[i][1].toString())) / d);
+          const d = this.mouseMoveTimeMatrix[i+1].valueOf() - this.mouseMoveTimeMatrix[i].valueOf();
+          vX = vX + ((Math.abs(parseFloat(this.mouseMoveMatrix[i+1][0].toString()) -parseFloat(this.mouseMoveMatrix[i][0].toString()))) / d);
+          vY = vY + ((Math.abs(parseFloat(this.mouseMoveMatrix[i+1][1].toString()) - parseFloat(this.mouseMoveMatrix[i][1].toString()))) / d);
         }
         vX /= this.mouseMoveMatrix.length;
         vY /= this.mouseMoveMatrix.length;
         var avgV = Math.sqrt(Math.pow(vX, 2) + Math.pow(vY, 2));
-        console.log('The average pixel per second is: ' + avgV);
-        console.log(vX);
+        console.log('The average pixel per second is: ' + 1000*avgV);
       }
       setTimeout(() => {
         this.mouseMoveFlag = true;
-      }, 500);
+      }, 100);
     } else {
       return;
     }
