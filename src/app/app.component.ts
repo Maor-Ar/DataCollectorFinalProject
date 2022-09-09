@@ -18,7 +18,7 @@ export class AppComponent {
   height: number;
   mouseMoveFlag: boolean = true; // flag to mouse move
   mouseMoveMatrix: Number[][] = new Array; // 2d arr that contains the current location of mouse [x.location][y.location]
-  mouseMoveTimeMatrix: Date[] = new Array; // arr to save the time of the mouse movement index is fit to the mouseMoveMatrix
+  mouseMoveTimeMatrix: Number[] = new Array; // arr to save the time of the mouse movement index is fit to the mouseMoveMatrix
   avgPixelPerSecond: number; // avg of the speed pixel per second
   typeKeyBoardMatrix: Number[] = new Array; // contains the time when a user press a key
   // indexForKeyTime : number; // to calculate the average time between all the keys pressed without repeating
@@ -35,8 +35,9 @@ export class AppComponent {
       this.width = window.innerWidth;
       this.height = window.innerHeight;
       this.mouseMoveMatrix.push([this.mouseX, this.mouseY]);
-      this.mouseMoveTimeMatrix.push(new Date());
+      this.mouseMoveTimeMatrix.push($event.timeStamp);
       console.log('x:', this.mouseX, 'y:', this.mouseY, 'width:', this.width, 'height:', this.height);
+      console.log($event);
       this.mouseMoveFlag = false;
       if (this.mouseMoveMatrix.length != 0 && this.mouseMoveMatrix.length != 1) {
         let vX = 0.0;
