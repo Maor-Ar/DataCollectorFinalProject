@@ -34,9 +34,10 @@
 // }
 
 
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from '../shared/data-storage.service';
+import { FormSubmitService } from '../shared/form-submit.service';
 
 @Component({
   selector: 'app-questions',
@@ -48,8 +49,7 @@ export class QuestionsComponent {
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
 
-
-  constructor(private dataStorageService : DataStorageService) {}
+  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService) {}
 
 
   onSubmit() {
@@ -60,7 +60,10 @@ export class QuestionsComponent {
     // this.user.answer = this.signupForm.value.questionAnswer;
     // this.user.gender = this.signupForm.value.gender;
     console.log(this.signupForm.value);
-    this.dataStorageService.addRecordToDB(this.signupForm.value);
+    this.formSubmitService.onSubmit(this.signupForm.value);
+    // this.dataStorageService.addRecordToDB(this.signupForm.value);
     this.signupForm.reset();
   }
+
+  
 }
