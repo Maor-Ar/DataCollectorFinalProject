@@ -1,42 +1,45 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'DataCollector';
 
-  constructor() {
-  }
-
-
-  mouseX: number;
-  mouseY: number;
-  width: number;
-  height: number;
+  isMobile: boolean = false;
+  touchSlideMatrix: Number[][] = new Array;
+  touchSlideTimeArray: Number[] = new Array;
   mouseMoveFlag: boolean = true; // flag to mouse move
+  scrollTimeArray: Number[] = new Array; // arr to save timestamp of scrolling events
   mouseMoveMatrix: Number[][] = new Array; // 2d arr that contains the current location of mouse [x.location][y.location]
-  mouseMoveTimeMatrix: Number[] = new Array; // arr to save the time of the mouse movement index is fit to the mouseMoveMatrix
+  mouseMoveTimeArray: Number[] = new Array; // arr to save the time of the mouse movement index is fit to the mouseMoveMatrix
+  mouseClickMatrix: Number[][] = new Array; // 2d arr that contains the current click location of mouse [x.location][y.location]
+  mouseClickTimeArray: Number[] = new Array; // arr to save the time of the mouse click index is fit to the mouseMoveMatrix
   avgPixelPerSecond: number; // avg of the speed pixel per second
-  typeKeyBoardMatrix: Number[] = new Array; // contains the time when a user press a key
+  typeKeyBoardTimeArray: Number[] = new Array; // contains the time when a user press a key
+  typeKeyBoardKeyArray: String[] = new Array; // contains the character that the user pressed
   // indexForKeyTime : number; // to calculate the average time between all the keys pressed without repeating
+  
+  
+  
+  constructor() {}
 
 
-
+  ngOnInit(): void {
+    if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+    || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| ||a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) 
+    {this.isMobile = true;}
+  }
 
   //@HostListener('keypress', ['$event'])
   @HostListener('mousemove', ['$event'])
   mouseMove($event: MouseEvent) {
     if (this.mouseMoveFlag == true) {
-      this.mouseX = $event.clientX;
-      this.mouseY = $event.clientY;
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
-      this.mouseMoveMatrix.push([this.mouseX, this.mouseY]);
-      this.mouseMoveTimeMatrix.push($event.timeStamp);
-      console.log('x:', this.mouseX, 'y:', this.mouseY, 'width:', this.width, 'height:', this.height);
+      this.mouseMoveMatrix.push([$event.clientX, $event.clientY]);
+      this.mouseMoveTimeArray.push($event.timeStamp);
+      console.log('x:', $event.clientX, 'y:', $event.clientY, 'width:', window.innerWidth, 'height:', window.innerHeight);
       console.log($event);
       console.log(this.mouseMoveMatrix.length);
       this.mouseMoveFlag = false;
@@ -44,7 +47,7 @@ export class AppComponent {
         let vX = 0.0;
         let vY = 0.0;
         for (let i = 0; i < this.mouseMoveMatrix.length - 1; i++) {
-          const d = this.mouseMoveTimeMatrix[i+1].valueOf() - this.mouseMoveTimeMatrix[i].valueOf();
+          const d = this.mouseMoveTimeArray[i+1].valueOf() - this.mouseMoveTimeArray[i].valueOf();
           vX = vX + ((Math.abs(parseFloat(this.mouseMoveMatrix[i+1][0].toString()) -parseFloat(this.mouseMoveMatrix[i][0].toString()))) / d);
           vY = vY + ((Math.abs(parseFloat(this.mouseMoveMatrix[i+1][1].toString()) - parseFloat(this.mouseMoveMatrix[i][1].toString()))) / d);
         }
@@ -60,26 +63,39 @@ export class AppComponent {
       return;
     }
   }
-  @HostListener('keyup', ['$event'])
-  @HostListener('keydown', ['$event'])
-  @HostListener('click', ['$event'])
-  @HostListener('scroll', ['$event'])
 
+  @HostListener('window:scroll', ['$event'])
+  scroll($event: Event)
+  {  
+    this.scrollTimeArray.push($event.timeStamp);
+  }
+  
+  @HostListener('keydown', ['$event'])
   keyup($event: KeyboardEvent) {
     console.log('key event:', $event);
-    if ($event.type === 'keydown') {
-      this.typeKeyBoardMatrix.push($event.timeStamp);
-      let avgPressedSpeed = 0.0;
-      for (let i = 0; i < this.typeKeyBoardMatrix.length-1; i++) {
-        avgPressedSpeed += (parseFloat(this.typeKeyBoardMatrix[i+1].toString()) - parseFloat(this.typeKeyBoardMatrix[i].toString()));
-      }
-      avgPressedSpeed /= this.typeKeyBoardMatrix.length;
-      console.log("The avg diffrence between pressed key is: " + avgPressedSpeed);
+    this.typeKeyBoardKeyArray.push($event.key);
+    this.typeKeyBoardTimeArray.push($event.timeStamp);
+    let avgPressedSpeed = 0.0;
+    for (let i = 0; i < this.typeKeyBoardTimeArray.length-1; i++) {
+      avgPressedSpeed += (parseFloat(this.typeKeyBoardTimeArray[i+1].toString()) - parseFloat(this.typeKeyBoardTimeArray[i].toString()));
     }
+    avgPressedSpeed /= this.typeKeyBoardTimeArray.length;
+    console.log("The avg difference between pressed key is: " + avgPressedSpeed);
   }
-
-
-
+  @HostListener('click', ['$event'])
+  click($event: PointerEvent)
+  {
+    this.mouseClickMatrix.push([$event.x,$event.y])
+    this.mouseClickTimeArray.push($event.timeStamp);
+  }
+  
+  @HostListener('touchmove', ['$event'])
+  slide($event)
+  {
+    console.log($event);
+    this.touchSlideMatrix.push([$event.x,$event.y])
+    this.touchSlideTimeArray.push($event.timeStamp);
+  }
   // keydown($event: KeyboardEvent) {
   //   console.log('Kkey event:', $event);
   // }

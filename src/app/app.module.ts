@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component';
-import { CanvasComponent } from './canvas/canvas.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {HttpClientModule} from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
@@ -17,7 +16,6 @@ const appRoutes :Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CanvasComponent,
     QuestionsComponent
   ],
   imports: [
