@@ -42,7 +42,8 @@ export class AppComponent implements OnInit, AfterContentInit {
       "mouseClickTimeArray": this.mouseClickTimeArray, 
       "typeKeyBoardTimeArray": this.typeKeyBoardTimeArray, 
       "typeKeyBoardKeyArray": this.typeKeyBoardKeyArray, 
-      "avgPixelPerSecond": this.avgPixelPerSecond
+      "avgPixelPerSecond": this.avgPixelPerSecond,
+      "date" : new Date()
   })});
   }
 

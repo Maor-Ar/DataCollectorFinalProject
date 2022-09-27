@@ -1,426 +1,271 @@
-
+<br>
+<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>questions</u></h1>
 
 <br>
-<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>questions</u></h1> 
-
-<br>
-<div class="container form-control">
-    <div class="row ">
-      <div >
-        <form (ngSubmit)="onSubmit()" #f="ngForm">
-            <div class="form-group">
-              <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> מה הגיל שלך?</b></label>
-              <input
-              type="number"
-              id="question1"
-              class="form-control"
-              ngModel
-              name="question1"
-              required>
-            </div>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> מה המין שלך?</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  זכר
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  נקבה
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  אחר
-                </label>
-              </div>
-            </div>
-
-            <br>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+<div class="container form-control" >
+  <div class="row " >
+    <div class="formSize" id="formSize" >
+      <form (ngSubmit)="onSubmit()" #f="ngForm" id="formID">
+        <div class="form-group">
+          <label for="userAge">גיל?</label>
+          <input id="userAge" name="userAge" ngModel placeholder="מה הגיל שלך?" type="text" class="form-control"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="nativeLanguage">שפת אם</label>
+          <div class="optionsStyle">
+            <select ngModel id="nativeLanguage" name="nativeLanguage" class="custom-select" required="required">
+              <option value="hebrew">עברית</option>
+              <option value="english">אנגלית</option>
+              <option value="arabic">ערבית</option>
+              <option value="other">אחר</option>
             </select>
-
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Open this select menu</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-
-
-
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> יש לך בעיות מוטוריות</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  כן
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  לא
-                </label>
-              </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>מגדר</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="userSex" id="userSex_0" type="radio" class="form-check-input" value="male"
+                required="required">
+              <label for="userSex_0" class="custom-control-label">זכר</label>
             </div>
-            
-            <br>
-            <div>
-              <br>
-              <br>
-              <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> אם כן מה הבעיה המוטורית (אופציונלי)?</b></label>
-              <input
-              type="text"
-              id="question1"
-              class="form-control"
-              ngModel
-              name="question1"
-              required>
+            <div class="form-check form-check-inline">
+              <input ngModel name="userSex" id="userSex_1" type="radio" class="form-check-input" value="female"
+                required="required">
+              <label for="userSex_1" class="custom-control-label">נקבה</label>
             </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="userSex" id="userSex_2" type="radio" class="form-check-input" value="other"
+                required="required">
+              <label for="userSex_2" class="custom-control-label">אחר</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>בעיות מוטוריות</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="motoricProblem" id="motoricProblem_0" type="radio" required="required"
+                class="form-check-input" value="y">
+              <label for="motoricProblem_0" class="custom-control-label">כן</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="motoricProblem" id="motoricProblem_1" type="radio" required="required"
+                class="form-check-input" value="n" checked="checked">
+              <label for="motoricProblem_1" class="custom-control-label">לא</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="motoricProblemInfo">פרט:</label>
+          <textarea ngModel id="motoricProblemInfo" name="motoricProblemInfo" cols="40" rows="2"
+            aria-describedby="motoricProblemInfoHelpBlock" class="form-control" placeholder="במידה ויש בעיות מוטוריות ניתן לפרט"></textarea>
+        </div>
+        <div class="form-group">
+          <label>יד דומיננטית</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="dominantHand" id="dominantHand_0" type="radio" required="required"
+                class="form-check-input" value="right">
+              <label for="dominantHand_0" class="custom-control-label">ימין</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="dominantHand" id="dominantHand_1" type="radio" required="required"
+                class="form-check-input" value="left">
+              <label for="dominantHand_1" class="custom-control-label">שמאל</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת שמחה בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="joyLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="joyLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="joyLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_3" type="radio" required="required" class="form-check-input"
+                value="3">
+              <label for="joyLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_4" type="radio" required="required" class="form-check-input"
+                value="4">
+              <label for="joyLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="joyLevel" id="joyLevel_5" type="radio" required="required" class="form-check-input"
+                value="5">
+              <label for="joyLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת פחד בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="fearLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="fearLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="fearLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_3" type="radio" required="required" class="form-check-input"
+                value="3">
+              <label for="fearLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_4" type="radio" required="required" class="form-check-input"
+                value="4">
+              <label for="fearLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="fearLevel" id="fearLevel_5" type="radio" required="required" class="form-check-input"
+                value="5">
+              <label for="fearLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת כעס בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="angerLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="angerLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="angerLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_3" type="radio" required="required" class="form-check-input"
+                value="3">
+              <label for="angerLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_4" type="radio" required="required" class="form-check-input"
+                value="4">
+              <label for="angerLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="angerLevel" id="angerLevel_5" type="radio" required="required" class="form-check-input"
+                value="5">
+              <label for="angerLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת עצב בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="sadnessLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="sadnessLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="sadnessLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_3" type="radio" required="required"
+                class="form-check-input" value="3">
+              <label for="sadnessLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_4" type="radio" required="required"
+                class="form-check-input" value="4">
+              <label for="sadnessLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="sadnessLevel" id="sadnessLevel_5" type="radio" required="required"
+                class="form-check-input" value="5">
+              <label for="sadnessLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת אשמה בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="guiltLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="guiltLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="guiltLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_3" type="radio" required="required" class="form-check-input"
+                value="3">
+              <label for="guiltLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_4" type="radio" required="required" class="form-check-input"
+                value="4">
+              <label for="guiltLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="guiltLevel" id="guiltLevel_5" type="radio" required="required" class="form-check-input"
+                value="5">
+              <label for="guiltLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="textarea">Text Area</label>
+          <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control"></textarea>
+        </div>
+
+        <button class="btn btn-primary form-control" type="submit" [disabled]="!f.valid">Submit</button>
+      </form>
+
+    </div>
+  </div>
+</div>
 
 
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> מהי היד הדומיננטית שלך?</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  ימין
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  שמאל
-                </label>
-              </div>
-            </div>
-
-
-            <br>
-            <br>
-            <br>
-            <label for="" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <label for="question1" class='bold' style=' float: right;direction: rtl; margin: 10px;'><b> כמה אתה שמח מ 1 עד 10? (1-לא שמח, 10 - שמח מאוד)</b></label>
-            <div  style=' float: right;direction: rtl; margin: 10px;'>
-              <br>
-              <div class="form-check form-check-inline"  >
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  1
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  2
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  3
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  4
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  5
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault2" checked>
-                <label class="form-check-label" for="flexRadioDefault2">
-                  6
-                </label>
-              </div>
-            </div>
-
-          <button
-          class="btn btn-primary form-control"
-          type="submit"
-          [disabled]="!f.valid">Submit</button>
-        </form>  
-  
-    </div></div></div>
-
-
-  <!-- <div class="form-group">
+<!-- <div class="form-group">
     <label for="secret">Secret Questions</label>
     <select
       id="secret"
@@ -486,13 +331,13 @@
 
 
 
-    <!-- <div class="row form-group form" >
+<!-- <div class="row form-group form" >
         <div class="col-md-12 "> -->
-            <!-- <label [for]="i">{{q.question}}</label>
+<!-- <label [for]="i">{{q.question}}</label>
             <input *ngIf="q.type == 'number'" [id]="i" [type]="q.type" class=" form-control" required [min]="q.range.min" [max]="q.range.max" NgModel [name]='q.title'>
             <input *ngIf="q.type == 'text'" [id]="i" [type]="q.type" class="form-control" required NgModel [name]='q.title'>
             <select *ngIf="q.type == 'list'" [id]="i" class="form-control" required >
                 <option *ngFor='let option of q.options' [value]="option">{{option}}</option>
             </select> -->
-        <!-- </div>
+<!-- </div>
     </div> -->
