@@ -254,7 +254,7 @@
         </div>
         <div class="form-group">
           <label for="textarea">Text Area</label>
-          <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control"></textarea>
+          <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off></textarea>
         </div>
 
         <button class="btn btn-primary form-control" type="submit" [disabled]="!f.valid">Submit</button>
