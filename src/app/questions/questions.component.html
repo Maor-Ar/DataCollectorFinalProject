@@ -1,14 +1,16 @@
 <br>
-<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>שאלון חקר פרוייקט גמר הנדסת תוכנה - מאור ורון</u></h1>
+<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>שאלון חקר פרוייקט גמר הנדסת תוכנה - מאור
+    ורון</u></h1>
 
 <br>
-<div class="container form-control" >
-  <div class="row " >
-    <div class="formSize" id="formSize" >
+<div class="container form-control">
+  <div class="row ">
+    <div class="formSize" id="formSize">
       <form (ngSubmit)="onSubmit()" #f="ngForm" id="formID">
         <div class="form-group">
           <label for="userAge">גיל?</label>
-          <input id="userAge" name="userAge" ngModel placeholder="מה הגיל שלך?" type="text" class="form-control" required="true">
+          <input id="userAge" name="userAge" ngModel placeholder="מה הגיל שלך?" type="number" class="form-control"
+            required="true">
         </div>
         <div class="form-group">
           <label for="nativeLanguage">שפת אם</label>
@@ -59,7 +61,8 @@
         <div class="form-group">
           <label for="motoricProblemInfo">פרט:</label>
           <textarea ngModel id="motoricProblemInfo" name="motoricProblemInfo" cols="40" rows="2"
-            aria-describedby="motoricProblemInfoHelpBlock" class="form-control" placeholder="במידה ויש בעיות מוטוריות ניתן לפרט"></textarea>
+            aria-describedby="motoricProblemInfoHelpBlock" class="form-control"
+            placeholder="במידה ויש בעיות מוטוריות ניתן לפרט"></textarea>
         </div>
         <div class="form-group">
           <label>יד דומיננטית</label>
@@ -165,18 +168,18 @@
               <label for="angerLevel_2" class="custom-control-label">2</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="angerLevel" id="angerLevel_3" type="radio" required="required" class="form-check-input"
-                value="3">
+              <input ngModel name="angerLevel" id="angerLevel_3" type="radio" required="required"
+                class="form-check-input" value="3">
               <label for="angerLevel_3" class="custom-control-label">3</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="angerLevel" id="angerLevel_4" type="radio" required="required" class="form-check-input"
-                value="4">
+              <input ngModel name="angerLevel" id="angerLevel_4" type="radio" required="required"
+                class="form-check-input" value="4">
               <label for="angerLevel_4" class="custom-control-label">4</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="angerLevel" id="angerLevel_5" type="radio" required="required" class="form-check-input"
-                value="5">
+              <input ngModel name="angerLevel" id="angerLevel_5" type="radio" required="required"
+                class="form-check-input" value="5">
               <label for="angerLevel_5" class="custom-control-label">5</label>
             </div>
           </div>
@@ -217,44 +220,118 @@
           </div>
         </div>
         <div class="form-group">
-          <label>רמת אשמה בעת מילוי השאלון:</label>
+          <label>רמת לחץ בעת מילוי השאלון:</label>
           <div class="optionsStyle">
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_0" type="radio" class="form-check-input" value="0"
+              <input ngModel name="stressLevel" id="stressLevel_0" type="radio" class="form-check-input" value="0"
                 required="required">
-              <label for="guiltLevel_0" class="custom-control-label">0</label>
+              <label for="stressLevel_0" class="custom-control-label">0</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_1" type="radio" class="form-check-input" value="1"
+              <input ngModel name="stressLevel" id="stressLevel_1" type="radio" class="form-check-input" value="1"
                 required="required">
-              <label for="guiltLevel_1" class="custom-control-label">1</label>
+              <label for="stressLevel_1" class="custom-control-label">1</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_2" type="radio" class="form-check-input" value="2"
+              <input ngModel name="stressLevel" id="stressLevel_2" type="radio" class="form-check-input" value="2"
                 required="required">
-              <label for="guiltLevel_2" class="custom-control-label">2</label>
+              <label for="stressLevel_2" class="custom-control-label">2</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_3" type="radio" required="required" class="form-check-input"
-                value="3">
-              <label for="guiltLevel_3" class="custom-control-label">3</label>
+              <input ngModel name="stressLevel" id="stressLevel_3" type="radio" required="required"
+                class="form-check-input" value="3">
+              <label for="stressLevel_3" class="custom-control-label">3</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_4" type="radio" required="required" class="form-check-input"
-                value="4">
-              <label for="guiltLevel_4" class="custom-control-label">4</label>
+              <input ngModel name="stressLevel" id="stressLevel_4" type="radio" required="required"
+                class="form-check-input" value="4">
+              <label for="stressLevel_4" class="custom-control-label">4</label>
             </div>
             <div class="form-check form-check-inline">
-              <input ngModel name="guiltLevel" id="guiltLevel_5" type="radio" required="required" class="form-check-input"
-                value="5">
-              <label for="guiltLevel_5" class="custom-control-label">5</label>
+              <input ngModel name="stressLevel" id="stressLevel_5" type="radio" required="required"
+                class="form-check-input" value="5">
+              <label for="stressLevel_5" class="custom-control-label">5</label>
             </div>
           </div>
         </div>
         <div class="form-group">
-          <h3 >אנא הקלד את הטקסט הבא בתיבת הטקסט שנמצאת למטה </h3>
-          <label style="color: rgb(86, 86, 86);" for="textarea">אַלִיס הִתְחִילָה לְהִשְׁתַּעֲמֵם מְאֹד מֵהַיְּשִׁיבָה עִם אֲחוֹתָהּ עַל שְׂפַת הַנָּהָר, וּמִכָּךְ שֶׁלֹּא הָיָה לָהּ מָה לַעֲשׂוֹת: פַּעַם אוֹ פַּעֲמַיִם הֵצִיצָה לְתוֹךְ הַסֵּפֶר שֶׁאֲחוֹתָהּ קָרְאָה, אֲבָל לֹא הָיוּ בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת, ״וּמָה הַטַּעַם בְּסֵפֶר,״ חָשְׁבָה אַלִיס, ״אִם אֵין בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת?״</label>
-          <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off></textarea>
+          <label>רמת עייפות בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_0" type="radio" class="form-check-input" value="0"
+                required="required">
+              <label for="tiredLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_1" type="radio" class="form-check-input" value="1"
+                required="required">
+              <label for="tiredLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_2" type="radio" class="form-check-input" value="2"
+                required="required">
+              <label for="tiredLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_3" type="radio" required="required"
+                class="form-check-input" value="3">
+              <label for="tiredLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_4" type="radio" required="required"
+                class="form-check-input" value="4">
+              <label for="tiredLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="tiredLevel" id="tiredLevel_5" type="radio" required="required"
+                class="form-check-input" value="5">
+              <label for="tiredLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>רמת חוסר ריכוז בעת מילוי השאלון:</label>
+          <div class="optionsStyle">
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_0" type="radio" class="form-check-input"
+                value="0" required="required">
+              <label for="distructedLevel_0" class="custom-control-label">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_1" type="radio" class="form-check-input"
+                value="1" required="required">
+              <label for="distructedLevel_1" class="custom-control-label">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_2" type="radio" class="form-check-input"
+                value="2" required="required">
+              <label for="distructedLevel_2" class="custom-control-label">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_3" type="radio" required="required"
+                class="form-check-input" value="3">
+              <label for="distructedLevel_3" class="custom-control-label">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_4" type="radio" required="required"
+                class="form-check-input" value="4">
+              <label for="distructedLevel_4" class="custom-control-label">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input ngModel name="distructedLevel" id="distructedLevel_5" type="radio" required="required"
+                class="form-check-input" value="5">
+              <label for="distructedLevel_5" class="custom-control-label">5</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <h3>אנא הקלד את הטקסט הבא בתיבת הטקסט שנמצאת למטה </h3>
+          <label style="color: rgb(86, 86, 86);" for="textarea">אַלִיס הִתְחִילָה לְהִשְׁתַּעֲמֵם מְאֹד מֵהַיְּשִׁיבָה
+            עִם אֲחוֹתָהּ עַל שְׂפַת הַנָּהָר, וּמִכָּךְ שֶׁלֹּא הָיָה לָהּ מָה לַעֲשׂוֹת: פַּעַם אוֹ פַּעֲמַיִם
+            הֵצִיצָה לְתוֹךְ הַסֵּפֶר שֶׁאֲחוֹתָהּ קָרְאָה, אֲבָל לֹא הָיוּ בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת, ״וּמָה
+            הַטַּעַם בְּסֵפֶר,״ חָשְׁבָה אַלִיס, ״אִם אֵין בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת?״</label>
+          <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control" onCopy="return false"
+            onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off></textarea>
         </div>
 
         <button class="btn btn-primary form-control" type="submit" [disabled]="!f.valid">Submit</button>
