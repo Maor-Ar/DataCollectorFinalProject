@@ -11,6 +11,9 @@ label{
     justify-content: center;
 }
 
+h3{
+    text-align: center;
+}
 input{
     margin: 5px;
 }
@@ -30,3 +33,13 @@ option{
 .form-group{
     margin: 25px;
 }
+
+@media screen and (min-width: 930px) {
+    .container {
+      max-width: 40%;
+    }
+  }
+
+/* .container{
+    max-width: 40%;
+} */

@@ -1,5 +1,5 @@
 <br>
-<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>questions</u></h1>
+<h1 class='text-center' style='font-family: "Alumni Sans Pinstripe"'><u>שאלון חקר פרוייקט גמר הנדסת תוכנה - מאור ורון</u></h1>
 
 <br>
 <div class="container form-control" >
@@ -8,8 +8,7 @@
       <form (ngSubmit)="onSubmit()" #f="ngForm" id="formID">
         <div class="form-group">
           <label for="userAge">גיל?</label>
-          <input id="userAge" name="userAge" ngModel placeholder="מה הגיל שלך?" type="text" class="form-control"
-            required>
+          <input id="userAge" name="userAge" ngModel placeholder="מה הגיל שלך?" type="text" class="form-control" required="true">
         </div>
         <div class="form-group">
           <label for="nativeLanguage">שפת אם</label>
@@ -253,7 +252,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="textarea">Text Area</label>
+          <h3 >אנא הקלד את הטקסט הבא בתיבת הטקסט שנמצאת למטה </h3>
+          <label style="color: rgb(86, 86, 86);" for="textarea">אַלִיס הִתְחִילָה לְהִשְׁתַּעֲמֵם מְאֹד מֵהַיְּשִׁיבָה עִם אֲחוֹתָהּ עַל שְׂפַת הַנָּהָר, וּמִכָּךְ שֶׁלֹּא הָיָה לָהּ מָה לַעֲשׂוֹת: פַּעַם אוֹ פַּעֲמַיִם הֵצִיצָה לְתוֹךְ הַסֵּפֶר שֶׁאֲחוֹתָהּ קָרְאָה, אֲבָל לֹא הָיוּ בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת, ״וּמָה הַטַּעַם בְּסֵפֶר,״ חָשְׁבָה אַלִיס, ״אִם אֵין בּוֹ תְּמוּנוֹת אוֹ שִׂיחוֹת?״</label>
           <textarea ngModel id="textarea" name="textarea" cols="40" rows="5" class="form-control" onCopy="return false" onDrag="return false" onDrop="return false" onPaste="return false" autocomplete=off></textarea>
         </div>
 
