@@ -36,6 +36,7 @@
 
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataStorageService } from '../shared/data-storage.service';
 import { FormSubmitService } from '../shared/form-submit.service';
 
@@ -49,7 +50,7 @@ export class QuestionsComponent {
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
 
-  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService) {}
+  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService,private router: Router) {}
 
 
   onSubmit() {
@@ -61,7 +62,7 @@ export class QuestionsComponent {
     // this.user.gender = this.signupForm.value.gender;
     console.log(this.signupForm.value);
     this.formSubmitService.onSubmit(this.signupForm.value);
-    // this.dataStorageService.addRecordToDB(this.signupForm.value);
+    this.router.navigate(['../finish']);
     this.signupForm.reset();
   }
 

@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { QuestionsComponent } from './questions/questions.component';
 import {HttpClientModule} from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router';
+import { FinishingScreenComponent } from './finishing-screen/finishing-screen.component';
 
 
 const appRoutes :Routes = [
   {path:'',redirectTo:'/questions', pathMatch:'full'},
-  {path:'questions', component: QuestionsComponent}
+  {path:'questions', component: QuestionsComponent},
+  {path:'finish', component: FinishingScreenComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    FinishingScreenComponent
   ],
   imports: [
     BrowserAnimationsModule,
