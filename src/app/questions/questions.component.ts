@@ -60,7 +60,7 @@ export class QuestionsComponent {
     // this.user.secretQuestion = this.signupForm.value.secret;
     // this.user.answer = this.signupForm.value.questionAnswer;
     // this.user.gender = this.signupForm.value.gender;
-    console.log(this.signupForm.value);
+    //console.log(this.signupForm.value);
     this.formSubmitService.onSubmit(this.signupForm.value);
     this.router.navigate(['../finish']);
     this.signupForm.reset();
