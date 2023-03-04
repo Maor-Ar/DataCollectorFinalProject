@@ -9,6 +9,6 @@ export class DataStorageService {
   constructor(private http: HttpClient) { }
 
   addRecordToDB(record){
-    return this.http.post('https://emotiondetectorapidata-default-rtdb.firebaseio.com/recordsV1.json',record).subscribe( res => console.log("Submited!"));
+    return this.http.post('https://emotiondetectorapidata-default-rtdb.firebaseio.com/recordsV3.json',record).subscribe( res => console.log("Submited!"));
   }
 }
