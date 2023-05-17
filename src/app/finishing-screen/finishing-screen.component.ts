@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../shared/aiModelApi.service';
 
 @Component({
   selector: 'app-finishing-screen',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinishingScreenComponent implements OnInit {
 
-  constructor() { }
+  constructor(public aiApi: ApiService) { }
 
   ngOnInit(): void {
   }

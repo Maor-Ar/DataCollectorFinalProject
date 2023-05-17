@@ -3,6 +3,9 @@ import { AfterContentInit, Component, HostListener, OnInit } from '@angular/core
 import { Subscription } from 'rxjs';
 import { DataStorageService } from './shared/data-storage.service';
 import { FormSubmitService } from './shared/form-submit.service';
+import { ApiService } from './shared/aiModelApi.service';
+import { AiApiResponse } from './interfaces/ai-api-response';
+import { format } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -32,26 +35,81 @@ export class AppComponent implements OnInit, AfterContentInit {
   startingTime: number;
   
   
-  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService, private http: HttpClient) {}
+  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService, private http: HttpClient, private aiService: ApiService) {}
   ngAfterContentInit(): void {
-    this.sub = this.formSubmitService.getSub().subscribe((form)=>{ this.dataStorageService.addRecordToDB({
-      "form": form,
-      "isMobile": this.isMobile,
-      "touchSlideMatrix": this.touchSlideMatrix,
-      "touchSlideTimeArray": this.touchSlideTimeArray,
-      "scrollTimeArray": this.scrollTimeArray,
-      "mouseMoveMatrix": this.mouseMoveMatrix,
-      "mouseMoveTimeArray": this.mouseMoveTimeArray,
-      "mouseClickMatrix": this.mouseClickMatrix, 
-      "mouseClickTimeArray": this.mouseClickTimeArray, 
-      "typeKeyBoardTimeArray": this.typeKeyBoardTimeArray, 
-      "typeKeyBoardKeyArray": this.typeKeyBoardKeyArray, 
-      "avgPixelPerSecond": this.avgPixelPerSecond,
-      "date" : new Date(),
-      "IPaddress": this.ipAddress,
-      "ScreenDimensions": this.ScreenDimensions,
-      "isIOS": this.isIOS
-  })});
+    this.sub = (this.formSubmitService.getSub().subscribe((form)=>{
+  //     this.dataStorageService.addRecordToDB({
+  //     "form": form,
+  //     "isMobile": this.isMobile,
+  //     "touchSlideMatrix": this.touchSlideMatrix,
+  //     "touchSlideTimeArray": this.touchSlideTimeArray,
+  //     "scrollTimeArray": this.scrollTimeArray,
+  //     "mouseMoveMatrix": this.mouseMoveMatrix,
+  //     "mouseMoveTimeArray": this.mouseMoveTimeArray,
+  //     "mouseClickMatrix": this.mouseClickMatrix, 
+  //     "mouseClickTimeArray": this.mouseClickTimeArray, 
+  //     "typeKeyBoardTimeArray": this.typeKeyBoardTimeArray, 
+  //     "typeKeyBoardKeyArray": this.typeKeyBoardKeyArray, 
+  //     "avgPixelPerSecond": this.avgPixelPerSecond,
+  //     "date" : new Date(),
+  //     "IPaddress": this.ipAddress,
+  //     "ScreenDimensions": this.ScreenDimensions,
+  //     "isIOS": this.isIOS
+  // })
+// send form to API
+  const backspaceComparedToTyping = this.BackspaceComparedToTyping(this.typeKeyBoardKeyArray)
+  this.aiService.predict(
+    {
+      "data": {
+          "User's Age": form.userAge,
+          "User's Sex": form.userSex === 'male'? 0 : 1,
+          "Speed": this.avgPixelPerSecond,
+          "Dominant Hand": form.dominantHand === 'right'? 0 : 1 ,
+          "Backspaces Count": backspaceComparedToTyping,
+          "Move Avg Time": this.calcAvgTime(this.mouseMoveTimeArray.map(n => n.valueOf())),
+          "Total Move Events": this.mouseMoveTimeArray.length,
+          "Click Avg Time": this.calcAvgTime(this.mouseClickTimeArray.map(n => n.valueOf())),
+          "Total Click Events": this.mouseClickTimeArray.length,
+          "Keyboard Avg Time": this.calcAvgTime(this.typeKeyBoardTimeArray.map(n => n.valueOf())),
+          "Total Keyboard Events": this.typeKeyBoardTimeArray.length
+      }
+  }
+  ).subscribe((res: AiApiResponse) => {
+    this.aiService.response = res ;
+    console.log(`RES: \n
+    distructedLevel ${res.distructedLevel[0]}\n
+    fearLevel ${res.fearLevel[0]}\n
+    joyLevel ${res.joyLevel[0]}\n
+    sadnessLevel ${res.sadnessLevel[0]}\n
+    stressLevel ${res.stressLevel[0]}\n
+    tiredLevel ${res.tiredLevel[0]}`);
+  })
+}));
+
+  }
+  calcAvgTime(TimeArray: number[]) {
+    const waitTimes = [];
+
+    for (let i = 0; i < TimeArray.length - 1; i++) {
+      waitTimes.push(TimeArray[i + 1] - TimeArray[i]);
+    }
+    const mouseClickAverageWaitTime = waitTimes.reduce((a, b) => a + b) / waitTimes.length;
+
+    return mouseClickAverageWaitTime;
+  }
+
+  BackspaceComparedToTyping(typeKeyBoardKeyArray: any) {
+    let backCount = 0;
+
+    for (const key of typeKeyBoardKeyArray) {
+      if (key === "Backspace") {
+        backCount++;
+      }
+    }
+
+    backCount /= typeKeyBoardKeyArray.length;
+
+    return backCount;
   }
 
 

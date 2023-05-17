@@ -37,6 +37,7 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from '../shared/aiModelApi.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { FormSubmitService } from '../shared/form-submit.service';
 
@@ -50,7 +51,7 @@ export class QuestionsComponent {
 
   @ViewChild('f', { static: false }) signupForm: NgForm;
 
-  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService,private router: Router) {}
+  constructor(private dataStorageService : DataStorageService, private formSubmitService: FormSubmitService,private router: Router, private apiService: ApiService) {}
 
 
   onSubmit() {
@@ -62,6 +63,8 @@ export class QuestionsComponent {
     // this.user.gender = this.signupForm.value.gender;
     //console.log(this.signupForm.value);
     this.formSubmitService.onSubmit(this.signupForm.value);
+    debugger
+    //this.apiService.predict(this.signupForm.value).subscribe( res => console.log("RES: "+res));;
     this.router.navigate(['../finish']);
     this.signupForm.reset();
   }

@@ -1,0 +1,22 @@
+.result-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    direction: ltr;
+    text-align: left;
+  }
+  
+  .result-container h2 {
+    margin-top: 0;
+  }
+  
+  .result-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .result-container li {
+    margin-bottom: 5px;
+  }
